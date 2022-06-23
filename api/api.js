@@ -6,21 +6,25 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  let data = getData("../data/data.json");
+app.get("/", async (req, res) => {
+  var currentPath = process.cwd();
+
+  console.log(currentPath);
+  let data = await readFile("../hu-test/data/data.json");
   res.send(data);
   res.end();
 });
 
-function getData(filePath) {
-  if (fs.existsSync(filePath)) {
-    let users = fs.readFileSync(filePath);
+const readFile = async (filePath) => {
+  try {
+    const users = await fs.promises.readFile(filePath);
     return JSON.parse(users);
-  } else {
-    return "file not fount ";
+  } catch (err) {
+    console.log(err);
   }
-}
+};
 
-app.listen(4090, () => {
-  console.log("server work");
+const PORT = process.env.PORT || 4090;
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
 });

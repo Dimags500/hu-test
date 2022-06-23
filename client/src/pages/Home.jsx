@@ -18,17 +18,26 @@ export const Home = () => {
 
 
     useEffect(() => {
-        fetchData()
+        setTimeout(() => {
+          fetchData()
+        }, 1000);
     }, [])
     
 
 const fetchData = async () =>{
 
-     const res = await getData() ;
-     const {Lecturers , Languages } = {...res}
-     setLectures(Lecturers) ;
-     setlanguages(Languages) ;
-     setLoading(false)
+
+
+      const res = await getData() ;
+      const {Lecturers , Languages } = {...res} ;
+      console.log(res);
+      setLectures(Lecturers) ;
+      setlanguages(Languages) ;
+      setLoading(false)
+
+      
+
+  
 }
 
 
