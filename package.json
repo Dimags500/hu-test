@@ -9,8 +9,8 @@
     "client": "npm start --prefix client",
     "install-api": "npm i --prefix client",
     "install-client": "npm i --prefix api",
-    "dep-i": "concurrently \"npm run install-api \" \" npm run install-client\"",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dep-i": "npm i --prefix api&&npm i --prefix client ",
+    "dev": "npm run server&&npm run client"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,6 @@
   },
   "homepage": "https://github.com/Dimags500/hu-test#readme",
   "dependencies": {
-    "concurrently": "^7.2.2",
-    "express": "^4.18.1",
-    "webpack-dev-middleware": "^5.3.3"
+    "concurrently": "^7.2.2"
   }
 }
