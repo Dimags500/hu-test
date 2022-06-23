@@ -23,9 +23,6 @@ export const Home = () => {
     
 
 const fetchData = async () =>{
-
-
-
       const res = await getData() ;
       const {Lecturers , Languages } = {...res} ;
       setLectures(Lecturers) ;
@@ -34,31 +31,23 @@ const fetchData = async () =>{
 }
 
 
+  const lecturesOptions = lectures.map( item => {return {value: item.languages , label: item.name}})
+  const languagesOptions = languages.map( item => {return {value: item.id , label: item.name}})
 
 
-  const lecturesOptions = lectures.map( item => {
-    return {value: item.languages , label: item.name}
-  })
-
-  const languagesOptions = languages.map( item => {
-    return {value: item.id , label: item.name}
-  })
-
-
+  // all logic run on client-side  , there is a small amount of data, so client can handle it 
   function filterLector(e){
     
     let lang = e.value ;
     const data = [] ;
-    for (let i = 0; i < lang.length; i++) {
-        const item= languages.filter( item => {
-            if( item.id == lang[i]){
-                return item
-            } } ) ;
 
-        data.push(item) ;
+    for (let i = 0; i < lang.length; i++) {
+    const item  = languages.filter( item => { if( item.id == lang[i]) return item }) ;
+    data.push(item) ;
     }
         let temp = data.flat(Infinity) ;
         let names = temp.map(item => item.name);
+
       setCurrData(names) 
   }
 
