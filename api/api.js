@@ -10,7 +10,7 @@ app.get("/", async (req, res) => {
   var currentPath = process.cwd();
 
   console.log(currentPath);
-  let data = await readFile("../hu-test/data/data.json");
+  let data = await readFile("data/data.json");
   res.send(data);
   res.end();
 });
