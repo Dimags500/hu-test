@@ -12,15 +12,13 @@ export const Home = () => {
     const [languages ,setlanguages] = useState([]);
     const [lectures ,setLectures] = useState([]);
 
-    const [selectedLanguage, setSelectedLanguage] = useState(' languages');
-    const [selectedLector, setSelectedLector] = useState(' lectures');
+    const [selectedLanguage, setSelectedLanguage] = useState({ label: "languages", value: 0 });
+    const [selectedLector, setSelectedLector] = useState({ label: "lectures", value: 0 });
     const [loading ,setLoading] = useState(true);
 
 
     useEffect(() => {
-        setTimeout(() => {
-          fetchData()
-        }, 1000);
+      fetchData()
     }, [])
     
 
@@ -30,14 +28,9 @@ const fetchData = async () =>{
 
       const res = await getData() ;
       const {Lecturers , Languages } = {...res} ;
-      console.log(res);
       setLectures(Lecturers) ;
       setlanguages(Languages) ;
       setLoading(false)
-
-      
-
-  
 }
 
 
