@@ -7,10 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node api/api.js ",
     "client": "npm start --prefix client",
-    "install-api": "npm i --prefix client",
-    "install-client": "npm i --prefix api",
     "dep-i": "npm i --prefix api&&npm i --prefix client ",
-    "dev": "npm run server&&npm run client"
+    "dev": "concurrently  \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
